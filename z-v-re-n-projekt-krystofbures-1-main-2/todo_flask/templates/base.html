@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Manager Ultra</title>
+</head>
+<body>
+<div>
+    <h1>Na zhotovení</h1>
+    <form action="/add" method="post">
+        <div>
+            <label>Vložte název projektu</label>
+            <input type="text" name="name">
+            <button type="submit">Přidat projekt</button>
+        </div>
+    </form><br></br>
+    <table>
+        <tbody>
+            {%for todo in todo_list%}
+         <tr>
+            <td>{{todo.task_id}}</td>
+            <td>{{todo.name}}</td>
+            {%if todo.done=False%}
+            <td>Není hotovo</td>
+            {%else%}
+            <td>Hotovo</td>
+            {%endif%}
+            <td><a href="/update/{{todo.task_id}}">Upravit</a></td>
+            <td><a href="/delete/{{todo.task_id}}">Smazat</a></td>
+         </tr>
+         {%endfor%}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
